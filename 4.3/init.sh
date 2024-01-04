@@ -92,6 +92,9 @@ if [ -f tiger-nominatim-preprocessed.csv.tar.gz ]; then
   sudo -E -u nominatim nominatim add-data --tiger-data tiger-nominatim-preprocessed.csv.tar.gz
 fi
 
+# enable searching by category/POI type
+sudo -E -u nominatim nominatim special-phrases --import-from-wiki
+
 # Sometimes Nominatim marks parent places to be indexed during the initial
 # import which leads to '123 entries are not yet indexed' errors in --check-database
 # Thus another quick additional index here for the remaining places
